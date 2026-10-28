@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.invoicedesk
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle_kotlin
+features: [app-name, gitignore, gradle, http-client, java, java-application, junit, logback, micronaut-aot, micronaut-build, micronaut-configuration-validation-gradle-plugin, micronaut-http-validation, netty-server, properties, readme, security-jwt, security-processor, serialization-jackson, shade, static-resources]
