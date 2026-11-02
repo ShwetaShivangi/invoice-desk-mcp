@@ -1,0 +1,11 @@
+micronaut:
+  application:
+    name: invoice-desk-mcp
+  mcp:
+    server:
+      transport: HTTP
+      info:
+        name: invoice-desk
+        version: 0.1.0
+  security:
+    enabled: false   # turned on in step 4
