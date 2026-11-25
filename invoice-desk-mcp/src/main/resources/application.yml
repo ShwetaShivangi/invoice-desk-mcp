@@ -6,6 +6,35 @@ micronaut:
       transport: HTTP
       info:
         name: invoice-desk
-        version: 0.1.0
+        version: 0.2.0
+  server:
+    cors:
+      enabled: true
+      configurations:
+        mcp-inspector:
+          allowed-origins:
+            - http://localhost:6274
+          exposed-headers:
+            - WWW-Authenticate
   security:
-    enabled: false   # turned on in step 4
+    authentication: bearer
+    intercept-url-map:
+      - pattern: /.well-known/oauth-protected-resource
+        access: [isAnonymous()]
+      - pattern: /.well-known/oauth-protected-resource/**
+        access: [isAnonymous()]
+      - pattern: /mcp
+        access: [isAuthenticated()]
+      - pattern: /mcp/**
+        access: [isAuthenticated()]
+    token:
+      jwt:
+        claims-validators:
+          issuer: ${invoicedesk.authorization-server}
+          audience: ${invoicedesk.resource-uri}
+
+invoicedesk:
+  resource-uri: ${MCP_RESOURCE_URI:`http://localhost:8080/mcp`}
+  authorization-server: ${OAUTH_ISSUER:`http://localhost:8180/realms/invoice-desk`}
+  scopes-supported:
+    - invoices:read

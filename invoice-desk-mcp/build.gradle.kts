@@ -22,6 +22,7 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.mcp:micronaut-mcp-server-java-sdk")
     runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("org.yaml:snakeyaml")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     aotPlugins(platform("io.micronaut.platform:micronaut-platform:5.2.4"))
     aotPlugins("io.micronaut.security:micronaut-security-aot")

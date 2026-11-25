@@ -1,11 +1,11 @@
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:26.7.5   # or latest stable 26.x
-    command: start-dev --import-realm
+    image: quay.io/keycloak/keycloak:26.7.5
+    command: start-dev
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin      # local dev only
+      # Optional, experimental: native RFC 8707 resource indicators
+      # KC_FEATURES: resource-indicators
     ports:
       - "8180:8080"
-    volumes:
-      - ./keycloak:/opt/keycloak/data/import

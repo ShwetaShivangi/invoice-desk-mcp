@@ -3,3 +3,8 @@ build/
 .idea/
 *.class
 node_modules/
+verify.log
+server.log
+.DS_Store
+.claude/
+package-lock.json

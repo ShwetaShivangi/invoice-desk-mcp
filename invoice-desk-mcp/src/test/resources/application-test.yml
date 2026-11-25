@@ -1,0 +1,16 @@
+# Tests sign their own tokens with a local test-only secret, so Keycloak
+# doesn't need to be running. Production/dev uses JWKS (application-dev.yml).
+micronaut:
+  security:
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: test-only-secret-that-is-at-least-32-chars
+              jws-algorithm: HS256
+
+invoicedesk:
+  resource-uri: http://localhost:8080/mcp
+  authorization-server: https://test-issuer.example
+  scopes-supported: [invoices:read]
